@@ -32,12 +32,10 @@ void workerProducer(Queue& q) {
     q.cv.notify_all();
 }
 void printAndDropMess(Queue &q) {
-    if (!q.mVector.empty()) {
         Message message = q.mVector.back();
-        message.printMessage();
         q.mVector.pop_back();
-    }
-}
+        message.printMessage();
+   }
 
 void workerConsumer(Queue& q) {
     while (true) {
